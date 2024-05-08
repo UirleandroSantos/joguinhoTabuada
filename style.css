@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.containerHomePage{
+    display: flex;
+    justify-content: center;
+    background-color: #CCC;
+}
+
+.containerErro{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerErro img{
+    width: 50%;
+    margin-top: 10rem;
+}
+
+.containerTabuada{
+    margin-top: 10%;
+    background-color: #FFF;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+#question{
+    margin-top: 1rem;
+}
+
+input{
+    outline: none;
+}
+
+button{
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+}
+
+#results{
+    background-color: rgb(197, 196, 196);
+    margin-top: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+}
