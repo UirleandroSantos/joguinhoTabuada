@@ -16,6 +16,7 @@ function generateQuestion(){
     }
 
     let questionText = "";
+    let questionTextFormated = "";
     let correctAnswer;
 
     switch (operations){
@@ -92,4 +93,11 @@ function checkAnswer(){
 }
 function backToHomePage(){
     window.location.href = './index.html'
+}
+
+function handleKeyDown(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // Impede o comportamento padrão do Enter (como enviar formulário)
+        document.querySelector("button").click(); // Simula um clique no botão "Responder"
+    }
 }
