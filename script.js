@@ -1,8 +1,10 @@
 let number1;
 let number2;
 
+let correctAnswers = [];
+
 function generateQuestion(){
-    let operations = Math.floor(Math.random() * 4);
+    let operations = Math.floor(Math.random() * 3);
 
     // Gerando number1 e number2
     number1 = Math.floor(Math.random() * 9) + 1;
@@ -35,10 +37,10 @@ function generateQuestion(){
             correctAnswer = number1 * number2;
             break;
 
-        case 3:
-            questionText = `Quanto é ${number1} / ${number2} ?`;
-            correctAnswer = number1 / number2;
-            break;
+        // case 3:
+        //     questionText = `Quanto é ${number1} / ${number2} ?`;
+        //     correctAnswer = number1 / number2;
+        //     break;
 
         default:
             break;
@@ -65,9 +67,9 @@ function checkAnswer(){
     if(questionText.includes("x")){
         correctAnswer = number1 * number2;
     }
-    if(questionText.includes("/")){
-        correctAnswer = number1 / number2;
-    }
+    // if(questionText.includes("/")){
+    //     correctAnswer = number1 / number2;
+    // }
 
     function feedback(userAnswer, correctAnswer){
         let result = document.createElement("div");
@@ -76,11 +78,15 @@ function checkAnswer(){
         
         if(userAnswer == correctAnswer){
             resultText.style.color = 'green';
-            resultText.innerHTML = `Resposta correta: ${correctAnswer}`
+            resultText.innerHTML = `Resposta correta: ${correctAnswer}`;
+            correctAnswers.push(correctAnswer);
+            console.log(correctAnswers)
         } else {
-            resultText.style.color = 'red';
-            resultText.innerHTML = `Resposta errada: ${userAnswer}`
             window.location.href = './erro.html';
+        }
+
+        if(correctAnswers.length > 9){
+            window.location.href = './acerto.html';
         }
         
         result.appendChild(resultText);
@@ -92,7 +98,7 @@ function checkAnswer(){
     generateQuestion();
 }
 function backToHomePage(){
-    window.location.href = './index.html'
+    window.location.href = './index.html';
 }
 
 function handleKeyDown(event) {

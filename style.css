@@ -16,14 +16,14 @@ body{
     background-color: #CCC;
 }
 
-.containerErro{
+.containerErro, .containerAcerto{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.containerErro img{
+.containerErro img, .containerAcerto img{
     width: 50%;
     margin-top: 10rem;
 }
