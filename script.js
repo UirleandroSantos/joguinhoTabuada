@@ -4,11 +4,11 @@ let number2;
 let correctAnswers = [];
 
 function generateQuestion(){
-    let operations = Math.floor(Math.random() * 3);
+    let operations = Math.floor(Math.random() * 4); // Atualizado para incluir divisão
 
     // Gerando number1 e number2
     number1 = Math.floor(Math.random() * 9) + 1;
-    number2 = Math.floor(Math.random() * 9) + 1;
+    number2 = Math.floor(Math.random() * (9 - 1) + 1); // Garantindo que number2 seja diferente de zero
 
     // Se a operação for subtração ou divisão e number1 for menor que number2, troque os valores
     if ((operations === 1 || operations === 3) && number1 < number2) {
@@ -18,7 +18,6 @@ function generateQuestion(){
     }
 
     let questionText = "";
-    let questionTextFormated = "";
     let correctAnswer;
 
     switch (operations){
@@ -37,10 +36,10 @@ function generateQuestion(){
             correctAnswer = number1 * number2;
             break;
 
-        // case 3:
-        //     questionText = `Quanto é ${number1} / ${number2} ?`;
-        //     correctAnswer = number1 / number2;
-        //     break;
+        case 3:
+            questionText = `Quanto é ${number1} ÷ ${number2} ?`;
+            correctAnswer = number1 / number2;
+            break;
 
         default:
             break;
@@ -50,13 +49,11 @@ function generateQuestion(){
     document.querySelector("#answer").focus();
     document.querySelector("#answer").value = "";
 }
-generateQuestion();
 
 function checkAnswer(){
-    let userAnswer = parseInt(document.querySelector("#answer").value);
+    let userAnswer = parseFloat(document.querySelector("#answer").value);
     let questionText = document.querySelector("#question").innerText;
     let correctAnswer;
-
 
     if(questionText.includes("+")){
         correctAnswer = number1 + number2;
@@ -67,9 +64,9 @@ function checkAnswer(){
     if(questionText.includes("x")){
         correctAnswer = number1 * number2;
     }
-    // if(questionText.includes("/")){
-    //     correctAnswer = number1 / number2;
-    // }
+    if(questionText.includes("÷")){
+        correctAnswer = number1 / number2;
+    }
 
     function feedback(userAnswer, correctAnswer){
         let result = document.createElement("div");
@@ -93,10 +90,10 @@ function checkAnswer(){
         document.querySelector("#results").appendChild(result);
     }
     
-    
     feedback(userAnswer, correctAnswer);
     generateQuestion();
 }
+
 function backToHomePage(){
     window.location.href = './index.html';
 }
@@ -107,3 +104,5 @@ function handleKeyDown(event) {
         document.querySelector("button").click(); // Simula um clique no botão "Responder"
     }
 }
+
+generateQuestion(); // Chamar a função para gerar a primeira pergunta ao carregar a página
